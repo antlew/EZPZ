@@ -1,40 +1,48 @@
-package com.gcproject.ezpz;
+package com.site.servlet;
 
 import java.io.IOException;
-import java.sql.SQLException;
-
+import java.util.ArrayList;
+import java.util.Scanner;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-@WebServlet("/form")
+@WebServlet("/EZPZServlet")
 public class EZPZServlet extends HttpServlet {
-	
+
 	private static final long serialVersionUID = 1L;
-       
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String meat = request.getParameter("meat");
-		String results = "";
-//		String meat = "chicken";
-		
+		ArrayList<String> meals = new ArrayList<String>();
+		String meal = "";
+		ArrayList<String> veggie = new ArrayList<String>();
+		Scanner in =new Scanner(System.in);
 		
 		try {
-			results = EZPZDao.getMeals(meat);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			meals = EZPZDao.getMeals(meat);
+			request.setAttribute("meals", meals);
+
+			getServletContext().getRequestDispatcher("/page2.jsp").forward(request, response);
+			
+			
+			
+			//meal = meals.get(index);
+			
+			//veggie = EZPZDao.getVeggies(meal);
+			//for(String b : veggie){
+			//	System.out.println(b);
+			//}
+			
+			in.close();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(results);
-		
-		
-	}
 
+
+	}
 
 }
