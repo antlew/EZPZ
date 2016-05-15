@@ -24,15 +24,9 @@
 </div>
 <% ArrayList<String> result = (ArrayList<String>) request.getAttribute("meals");
 
-out.println("<form action = '/EZPZServlet'>");
-out.println("<select name = 'meal'>");
 for(String b : result){
-	out.println("<option value = '"+b+"'>"+b+"</option>");
+	out.println("a href='url'>"+b+"</a>");
 }
-
-out.println("</select>");
-out.println("<input type = 'submit'>");
-out.println("</form>");
 
 %>
 
