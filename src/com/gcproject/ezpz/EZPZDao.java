@@ -1,7 +1,8 @@
-package com.site.servlet;
+package com.gcproject.ezpz;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -9,63 +10,88 @@ import java.util.ArrayList;
 
 public class EZPZDao {
 
-	private static Connection connect = null;
-	private static Statement statement = null;
-	private static ResultSet resultSet = null;
 
 	public static Connection readDataBase() throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
-		connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/FinalProject", "root", "sesame");
+		Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/ezpz", "root", "sesame");
 		
 		return connect;
 	}
 	
 	public static Statement getStatement() throws Exception, SQLException {
-		connect = readDataBase();
-		statement = connect.createStatement();
+		Connection connect = readDataBase();
+		Statement statement = connect.createStatement();
 
 		return statement;
 	}
 
-	public static ArrayList<String> getMeals(String query) throws Exception {
-		statement = getStatement();
-		resultSet = statement.executeQuery("select * from new_table where Meat = '" + query + "'");
+	public static String[] getData(String query) throws Exception {
+		Statement statement = getStatement();
+		ResultSet resultSet = statement.executeQuery("select * from ezpz.recipes where Meal = '" + query + "'");
 		
-		ArrayList<String> meals = new ArrayList<String>();
+		String[] info = new String[3];
 		while(resultSet.next()){
-			meals.add(resultSet.getString("Meal"));
+			
+			info[0] = resultSet.getString("Replacement");
+			info[1] = resultSet.getString("Url");
+			info[2] = resultSet.getString("Veggie");
 		}
-		return meals;
+		return info;
 	}
 
 
-	public static ArrayList<String> getVeggies(String query) throws Exception{
-		statement = getStatement();
-		resultSet = statement.executeQuery("select * from new_table where Meal = '" + query + "'");
+	public static String[] getNutrition(String query) throws Exception{
+		Statement statement = getStatement();
+		ResultSet resultSet = statement.executeQuery("select * from ezpz.nutrition where Meat = '" + query + "'");
 
-		ArrayList<String> recipes = new ArrayList<String>();
+		String[] recipes = new String[5];
 		while(resultSet.next()){
-			recipes.add(resultSet.getString("Veggie"));
+			
+			recipes[0] =resultSet.getString("Name");
+			recipes[1] =resultSet.getString("Protein");
+			recipes[2] =resultSet.getString("Carbs");
+			recipes[3] =resultSet.getString("Fiber");
+			recipes[4] =resultSet.getString("Calories");
 		}
 		return recipes;
 	}
 	
-	private static void close() {
-		try {
-			if (resultSet != null) {
-				resultSet.close();
-			}
+	
+//	
+//	private static void close() {
+//		try {
+//			if (resultSet != null) {
+//				resultSet.close();
+//			}
+//
+//			if (statement != null) {
+//				statement.close();
+//			}
+//
+//			if (connect != null) {
+//				connect.close();
+//			}
+//		} catch (Exception e) {
+//
+//		}
+//	}
 
-			if (statement != null) {
-				statement.close();
-			}
-
-			if (connect != null) {
-				connect.close();
-			}
-		} catch (Exception e) {
-
-		}
-	}
-
+//	public static void insertInfo(String[] array) throws Exception {
+//		connect = readDataBase();
+//		String preparedQuery = "Insert Into ezpz.easypeasy (Meal, Meat)" + "Values(?,?)";
+//		
+//		try {
+//			for(String a: array){
+//				preparedStatement = connect.prepareStatement(preparedQuery);
+//				preparedStatement.setString(1,a);
+//				preparedStatement.setString(2,"");
+//				preparedStatement.executeUpdate();
+//			}
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+//	}
 }
+

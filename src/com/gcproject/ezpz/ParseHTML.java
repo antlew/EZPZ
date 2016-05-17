@@ -1,4 +1,4 @@
-package com.site.object;
+package com.gcproject.ezpz;
 
 import java.io.IOException;
 

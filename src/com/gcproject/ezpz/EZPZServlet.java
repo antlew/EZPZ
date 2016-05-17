@@ -1,4 +1,4 @@
-package com.site.servlet;
+package com.gcproject.ezpz;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,19 +14,28 @@ public class EZPZServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+		
 		String meat = request.getParameter("meat");
-		ArrayList<String> meals = new ArrayList<String>();
-		String meal = "";
-		ArrayList<String> veggie = new ArrayList<String>();
-		Scanner in =new Scanner(System.in);
+		String meal = request.getParameter("meal");
+		System.out.println(meat);
+		System.out.println(meal);
+		String[] meals = new String[3];
+		String[] nutrition = new String[5];
+		Scanner in = new Scanner(System.in);
 		
 		try {
-			meals = EZPZDao.getMeals(meat);
+			meals = EZPZDao.getData(meat);
 			request.setAttribute("meals", meals);
+			
+			
+			String veggie = meals[2];
+			
+			nutrition = EZPZDao.getNutrition(veggie);
+			request.setAttribute("nutrition", nutrition);
+		
 
-			getServletContext().getRequestDispatcher("/page2.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/meals.jsp").forward(request, response);
 			
 			
 			
