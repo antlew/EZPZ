@@ -84,7 +84,7 @@
 				</div>
 				<div class="col-lg-12 text-center">
 					<h2>
-						Meal <br> <small>A Good Replacement Meal Would Be:</small>
+						Meal <br> <small>A Good Replacement Meal Would Is:</small>
 					</h2>
 					<%
 						String[] meals = new String[4];
