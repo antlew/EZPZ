@@ -112,30 +112,18 @@
                     <h1 class="brand-name">Easy Peasy</h1>
                     <hr class="tagline-divider">
                     <h2>
-                        <small>By
-                            <strong>A.J. and Anthony</strong>
+                        <small>
+                            <strong>Changing Your Diet One Meal At A Time</strong>
                         </small>
                     </h2>
+                    <p>About US information words words words words words words words</p>
+                    <p>Something</p>
+                    <p>Something</p>
                 </div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="box">
-                <div class="col-lg-12">
-                    <hr>
-                    <h2 class="intro-text text-center">Changing Your Diet
-                        <strong>One Meal at a Time</strong>
-                    </h2>
-                    <hr>
-                    <img class="img-responsive img-border img-left" src="img/sandwich.jpg" alt="">
-                    <hr class="visible-xs">
-                    <p>About US information</p>
-                    <p>Something</p>
-                    <p>Something</p>
-                    </div>
-            </div>
-        </div>
+        
 
         <div class="row">
             <div class="box">
@@ -151,7 +139,8 @@
   	<table>
 
 		<tr>
-			<td><select id="opts" onchange="showForm()" name = "meat">
+			<td>
+			<select id="opts" onchange="showForm()" name = "meat">
 					<option value="0">Select Meat</option>
 					<option value="chicken">Chicken</option>
 					<option value="beef">Beef</option>
@@ -160,10 +149,10 @@
 			</select>
 
 				<div id="f1" style="display: none">
-					<form name="form1" action ="/EZPZServlet">
-						<select id="opts" onchange="showForm()">
-							<option value="0">Shepard's Pie</option>
-							<option value="1">Chicken Tacos</option>
+					<form name="form1" action ="EZPZServlet">
+						<select id="opts" onchange="showForm()" name = "meal">
+							<option value="Shephards Pie">Shephards Pie</option>
+							<option value="Chicken Tacos">Chicken Tacos</option>
 							<option value="2">Chicken Alfredo</option>
 						</select>
 						<input type="submit" value="Submit">
@@ -171,30 +160,30 @@
 				</div>
 
 				<div id="f2" style="display: none">
-					<form name="form2" action ="/EZPZServlet">
-						<select id="opts" onchange="showForm()">
-							<option value="0">Ribs</option>
-							<option value="1">Lasagna</option>
+					<form name="form2" action ="EZPZServlet">
+						<select id="opts" onchange="showForm()" name = "meal">
+							<option value="Ribs">Ribs</option>
+							<option value="Lasagna">Lasagna</option>
 							<option value="2">Spaghetti with Meatballs</option>
 						</select>
 						<input type="submit" value="Submit">
 					</form>
 				</div>
 				<div id="f3" style="display: none">
-					<form name="form3" action ="/EZPZServlet">
-						<select id="opts" onchange="showForm()">
-							<option value="0">Pork Ribs</option>
-							<option value="1">Meatloaf</option>
+					<form name="form3" action ="EZPZServlet">
+						<select id="opts" onchange="showForm()" name = "meal">
+							<option value="Pork Ribs">Pork Ribs</option>
+							<option value="Meatloaf">Meatloaf</option>
 							<option value="2">Pork Chops</option>
 						</select>
 						<input type="submit" value="Submit">
 					</form>
 				</div>
 				<div id="f4" style="display: none">
-					<form name="form4" action ="/EZPZServlet">
-						<select id="opts" onchange="showForm()">
-							<option value="0">Fish Tacos</option>
-							<option value="1">Salmon</option>
+					<form name="form4" action ="EZPZServlet">
+						<select id="opts" onchange="showForm()" name = "meal">
+							<option value="Fish Tacos">Fish Tacos</option>
+							<option value="Salmon">Salmon</option>
 							<option value="2">Tuna Casserole</option>
 						</select>
 						<input type="submit" value="Submit">
@@ -207,6 +196,7 @@
         </div>
 
     </div>
+   
     <!-- /.container -->
 
     <footer>

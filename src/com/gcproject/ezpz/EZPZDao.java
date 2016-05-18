@@ -29,12 +29,13 @@ public class EZPZDao {
 		Statement statement = getStatement();
 		ResultSet resultSet = statement.executeQuery("select * from ezpz.recipes where Meal = '" + query + "'");
 		
-		String[] info = new String[3];
+		String[] info = new String[4];
 		while(resultSet.next()){
 			
 			info[0] = resultSet.getString("Replacement");
 			info[1] = resultSet.getString("Url");
 			info[2] = resultSet.getString("Veggie");
+			info[3] = resultSet.getString("Meat");
 		}
 		return info;
 	}
@@ -57,24 +58,6 @@ public class EZPZDao {
 	}
 	
 	
-//	
-//	private static void close() {
-//		try {
-//			if (resultSet != null) {
-//				resultSet.close();
-//			}
-//
-//			if (statement != null) {
-//				statement.close();
-//			}
-//
-//			if (connect != null) {
-//				connect.close();
-//			}
-//		} catch (Exception e) {
-//
-//		}
-//	}
 
 //	public static void insertInfo(String[] array) throws Exception {
 //		connect = readDataBase();

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.gcproject.ezpz.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -82,29 +82,39 @@
 					</h2>
 					<hr>
 				</div>
-				 <div class="col-lg-12 text-center">
-                    <h2>Meal
-                        <br>
-                        <small>...</small>
-                    </h2>
-<% String[] meals = (String[]) request.getAttribute("meals");
-   String[] nutrition = (String[]) request.getAttribute("nutrition");
+				<div class="col-lg-12 text-center">
+					<h2>
+						Meal <br> <small>A Good Replacement Meal Would Be:</small>
+					</h2>
+					<%
+						String[] meals = new String[4];
+						String[] nutrition = new String[5];
+						String meal = (String) request.getAttribute("meal");
+						meals = EZPZDao.getData(meal);
+						String veggie = meals[2];
+						nutrition = EZPZDao.getNutrition(veggie);
 
-	out.println("<h3>"+meals[0]+"</h3>");
+						out.println("<h3>" + meals[0] + "</h3>");
+						out.println("<a href = '"+ meals[1]+"'> Veiw Full Recipe Here</a>");
+						out.println("<h5>Main Ingredient: " + nutrition[0] +"</h2>");
+						out.println("<h5>Protein: " + nutrition[1] +"</h2>");
+						out.println("<h5>Carbs: " + nutrition[2] +"</h2>");
+						out.println("<h5>Fiber: " + nutrition[3] +"</h2>");
+						out.println("<h5>Calories: " + nutrition[4] +"</h2>");
+						
+						
+					%>
 
 
-%>
 
 
 
 
-                    
-                    
-                    
-                    <hr>
-                </div>
-                
-                
+
+					<hr>
+				</div>
+
+
 			</div>
 		</div>
 	</div>
