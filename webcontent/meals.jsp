@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="com.gcproject.ezpz.*"%>
+<%@ page import = "org.jsoup.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -93,8 +94,10 @@
 						meals = EZPZDao.getData(meal);
 						String veggie = meals[2];
 						nutrition = EZPZDao.getNutrition(veggie);
+						String summary = ParseHTML.getTitle(meals[1]);
 
 						out.println("<h3>" + meals[0] + "</h3>");
+						out.println("<p>" + summary + "</p>");
 						out.println("<a href = '"+ meals[1]+"'> Veiw Full Recipe Here</a>");
 						out.println("<h5>Main Ingredient: " + nutrition[0] +"</h2>");
 						out.println("<h5>Protein: " + nutrition[1] +"</h2>");
